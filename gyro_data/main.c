@@ -37,5 +37,6 @@ int main(int argc, char** argv)
     flo = 5*pow(10,-8);
     P_F(5*pow(10,-8));
     P_F(flo);
+    P_I(sizeof(flo));
     return (EXIT_SUCCESS);
 }
