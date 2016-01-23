@@ -14,7 +14,9 @@
 //#define MACROS_AND_PREPROCESSORS_IN_C
 //#define TWO_S_COMPLHEMENT_CHECKSUM
 //#define ONE_S_COMPLHEMENT_CHECKSUM
-#define WRITE_DATA_TO_FILE
+//#define WRITE_DATA_TO_FILE
+//#define FLOAT_POINT_PSOT
+#define CHANG_CONST_VALUE
 
 #ifdef MACROS_AND_PREPROCESSORS_IN_C
 #define MAX 100
@@ -29,8 +31,8 @@
                             }
 #define SQUARE(x) x*x
 
-inline int square(int x)
-{
+inline int
+square(int x) {
     return x*x;
 } //with or without inline same ouput
 
@@ -42,9 +44,24 @@ inline int square(int x)
 
 void Fun_W_Parameter(int);
 void Fun_WO_Parameter();
+char *ptr = 0;
 
-int main(int argc, char** argv)
-{
+int
+main(int argc, char** argv) {
+    
+#ifdef CHANG_CONST_VALUE
+    const char a = '\012';
+    ptr = (char*) &a;
+    *ptr = 55;
+    *(int *) (0x22ac3f) = 25;
+    printf("%d %p", a, (void *) &a);
+#endif 
+    
+#ifdef FLOAT_POINT_PSOT
+    float i = 1;
+    printf("%0.9f", i);
+#endif
+
 #ifdef CALL_FUN_W_WO_PARAMETER
     /*calling a function with and without parameter*/
     printf("\ncalling a function with and without parameter");
@@ -114,13 +131,13 @@ int main(int argc, char** argv)
 
 #ifdef CALL_FUN_W_WO_PARAMETER
 
-void Fun_W_Parameter(int data_rx)
-{
+void
+Fun_W_Parameter(int data_rx) {
     printf("\n %s = %d", __FUNCTION__, data_rx);
 }
 
-void Fun_WO_Parameter()
-{
+void
+Fun_WO_Parameter() {
     printf("\n Calling this function  %s W or W/o parameters their no effect", __FUNCTION__);
 }
 #endif
