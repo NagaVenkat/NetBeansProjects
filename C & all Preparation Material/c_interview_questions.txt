@@ -1,0 +1,35 @@
+What is structure padding?﻿
+What is data alignment?
+q on 16/32 bit
+﻿E.g and float﻿Structure member 
+passing call by value and call by functions  efficiency﻿
+Function re-entrancy
+﻿Volatile, 
+input capture, 
+frequency calculation﻿
+How to instruct compiler to set stack size ﻿Program memory..booting process is there any tool present
+pragma why and exactly wat is happening while u r compiling code with this
+﻿Accelerometer procedure sensor principles﻿
+Use of macros real time e.gs﻿Macro vs inline﻿
+Macro compile time or run time
+﻿Where it will be placed in memory segment ﻿Code and its converted form in memory segment
+Code and its converted form in memory segment
+﻿Linking process and complete procedure of each and every stage of compilation to binary generation﻿
+Strict with #pragma
+﻿Macro with strings
+﻿Endian ness 0001 .
+check﻿Code that will work for little endian and big endian 
+Constant ..memory segment..int I ..tyoecast to char and address to ptr whrleAther can change the constant value
+﻿Why constant 
+...constant vs macros﻿
+Static varible and static functions and memory segment﻿
+Can we instruct the compiler to stop in pre-processing stage automatically if error fount﻿
+How to see assembly equivalent﻿ Linking linker script
+
+
+Define all steps and wat happens in all ﻿The steps 
+.what is linking...what happen﻿When. We write #includestrd...in pre-processing step.
+﻿Char arr[]= " string" if trying wher in memory...﻿Char*ptr. "string". 
+Where in memory﻿Can we Chang ptr(s). 
+H﻿Constan wherevstatic wheere﻿Set bit and off ...coplement﻿Reading add of a register﻿
+Difference between auto and register

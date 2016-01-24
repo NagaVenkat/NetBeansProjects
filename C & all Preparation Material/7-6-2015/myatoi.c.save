@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include "includes.h"
+void myatoi(char *);
+
+int main(void)
+{
+char str[] = {"123456789"};
+P_S(str);
+myatoi(str);
+return 0;
+}
+
+void myatoi(char *str1)
+{
+char ch[] = {0},i=0,j=0;
+P_S(str1);
+while(*str1)
+{
+//ch[j++] =(int)(str1[i++] - '0');
+P_C(*str1);
+ch[j] = (*str1);
+j++;
+*str++;
+//sprintf(ch,"%d",&str1);
+P_C(ch[j]);
+}
+P_S(ch);
+}

@@ -1,0 +1,7 @@
+#define P_I(EXP) printf(#EXP "\n = %d",EXP);
+#define P_C(EXP) printf(#EXP "\n = %c",EXP);
+#define P_X(EXP) printf(#EXP "\n = %x",EXP);
+#define P_S(EXP) printf(#EXP "\n = %s",EXP);
+#define P_F(EXP) printf(#EXP "\n = %f",EXP);
+#define NEW_LINE printf("\n");
+
