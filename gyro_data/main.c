@@ -19,7 +19,10 @@
 /*
  * 
  */
-int (*a)(int v);
+
+int (*a[10])(int v);
+int (b)(int v);
+int (c)(int v);
 //typedef int(*PtrToArray)[5];
 //PtrToArray function();
 //
@@ -28,6 +31,7 @@ uint8_t gyro_data[55] = {0};
 
 int main(int argc, char** argv)
 {
+    static int g = 10;
     P_NL(Gyrodata);
     uint8_t i = 0;
     uint16_t sum = 0;
@@ -43,12 +47,8 @@ int main(int argc, char** argv)
     P_F(5*pow(10,-8));
     P_F(flo);
     P_I(sizeof(flo));
+    //array of pointers to a function
 //    a();
     return (EXIT_SUCCESS);
-}
-
-int (*a)(int v)
-{
-//    printf("pointer");
 }
 

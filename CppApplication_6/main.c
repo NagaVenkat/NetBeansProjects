@@ -5,7 +5,6 @@
  * Created on December 19, 2015, 12:28 PM
  */
 
-
 #include <stdio.h>
 #include <stdlib.h>
 #include "standardDef.h"
@@ -15,9 +14,16 @@
 //#define TWO_S_COMPLHEMENT_CHECKSUM
 //#define ONE_S_COMPLHEMENT_CHECKSUM
 //#define WRITE_DATA_TO_FILE
-//#define FLOAT_POINT_PSOT
-#define CHANG_CONST_VALUE
+//#define FLOAT_POINT_POSITION
+//#define CHANG_CONST_VALUE
+//#define ARRAY_OF_POINTERS_TO_FUNC
+#define CONST_ACCESSING
 
+#ifdef ARRAY_OF_POINTERS_TO_FUNC
+int (*a[10])(int v);
+int (b) (int v);
+int (c) (int v);
+#endif
 #ifdef MACROS_AND_PREPROCESSORS_IN_C
 #define MAX 100
 #define INCREMENT(x) ++x
@@ -32,7 +38,8 @@
 #define SQUARE(x) x*x
 
 inline int
-square(int x) {
+square(int x)
+{
     return x*x;
 } //with or without inline same ouput
 
@@ -47,8 +54,33 @@ void Fun_WO_Parameter();
 char *ptr = 0;
 
 int
-main(int argc, char** argv) {
+main(int argc, char** argv)
+{
+
+#ifdef CONST_ACCESSING
+    int _g = 12;
+    const int *g = (int *) 10;//pointer to a constant integer
+    /*here memory location i.e integer is not accessible "*g" but "g" pointer
+     * variable is modifiable */
+    P_I(g);
+    g = &_g;
+    P_I(*g);
+    int* const h = (int *) 10;//constant pointer to an integer
+    /*here memory location i.e integer is accessible "*h" but "h" pointer 
+     * variable is not modifiable */
+    P_I(h);
+    *h = 12;//need to check some problem
+    P_I(_g);
     
+#endif 
+
+#ifdef ARRAY_OF_POINTERS_TO_FUNC
+    a[0] = b;
+    a[0](1);
+    a[1] = c;
+    a[1](1);
+#endif 
+
 #ifdef CHANG_CONST_VALUE
     const char a = '\012';
     ptr = (char*) &a;
@@ -56,8 +88,8 @@ main(int argc, char** argv) {
     *(int *) (0x22ac3f) = 25;
     printf("%d %p", a, (void *) &a);
 #endif 
-    
-#ifdef FLOAT_POINT_PSOT
+
+#ifdef FLOAT_POINT_POSITION
     float i = 1;
     printf("%0.9f", i);
 #endif
@@ -132,12 +164,27 @@ main(int argc, char** argv) {
 #ifdef CALL_FUN_W_WO_PARAMETER
 
 void
-Fun_W_Parameter(int data_rx) {
+Fun_W_Parameter(int data_rx)
+{
     printf("\n %s = %d", __FUNCTION__, data_rx);
 }
 
 void
-Fun_WO_Parameter() {
+Fun_WO_Parameter()
+{
     printf("\n Calling this function  %s W or W/o parameters their no effect", __FUNCTION__);
+}
+#endif
+
+#ifdef ARRAY_OF_POINTERS_TO_FUNC
+
+int b(int v)
+{
+    printf("pointer - B\n");
+}
+
+int c(int v)
+{
+    printf("pointer - C\n");
 }
 #endif
