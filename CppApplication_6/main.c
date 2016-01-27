@@ -17,8 +17,22 @@
 //#define FLOAT_POINT_POSITION
 //#define CHANG_CONST_VALUE
 //#define ARRAY_OF_POINTERS_TO_FUNC
-#define CONST_ACCESSING
+//#define CONST_ACCESSING
 
+//----::Notes::--------//
+
+//--- Qualifiers used in C Language ----//
+/* 
+ * Constant: refer #define CONST_ACCESSING
+ * Volatile: A volatile variable is one that can change unexpectedly.  
+   Consequently, the compiler can make no assumptions about the value of the 
+   variable.  In particular, the optimizer must be careful to reload the 
+   variable every time it is used instead of holding a copy in a register. 
+  Examples of volatile variables are: 
+ * Hardware registers in peripherals (e.g., status registers)
+ * Non-stack variables referenced within an interrupt service routine.
+ * Variables shared by multiple tasks in a multi-threaded application.
+ */
 /* Difference b/w variable declaration and definition
  
  * declare a variable:  refers to the part where a variable is first declared 
@@ -31,7 +45,7 @@
 /*
  * 
  */
-
+const volatile int *abc = 0;
 #ifdef ARRAY_OF_POINTERS_TO_FUNC
 int (*a[10])(int v);
 int (b) (int v);
@@ -72,6 +86,17 @@ main(int argc, char** argv)
 
 #ifdef CONST_ACCESSING
     int _g = 12;
+    int *ptr = 0;
+    const int const_var = 11;
+    int const const_var_1 = 12;
+    /*above mentioned both are same i.e a is constant (read only) integer
+     * 
+     * To change the value of above declarations see below
+     */
+    P_I(const_var);
+    ptr= (int *)&const_var;
+    *ptr = 25;
+    P_I(const_var);
     const int *g = (int *) 10;//pointer to a constant integer
     /*here memory location i.e integer is not accessible "*g" but "g" pointer
      * variable is modifiable */
@@ -84,7 +109,10 @@ main(int argc, char** argv)
     P_I(h);
     *h = 12;//need to check some problem
     P_I(_g);
-    
+    /*int const * a const;
+     * a to be a const pointer to a const integer (i.e., neither the integer
+     * pointed to by a, nor the pointer itself may be modified).
+     */   
 #endif 
 
 #ifdef ARRAY_OF_POINTERS_TO_FUNC
