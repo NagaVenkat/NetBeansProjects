@@ -19,6 +19,19 @@
 //#define ARRAY_OF_POINTERS_TO_FUNC
 #define CONST_ACCESSING
 
+/* Difference b/w variable declaration and definition
+ 
+ * declare a variable:  refers to the part where a variable is first declared 
+   or introduced before its first use
+ * define a variable:  the part where the variable is assigned a memory location
+   and a value. Most of the times, variable declaration and definition are done
+   together
+ */
+
+/*
+ * 
+ */
+
 #ifdef ARRAY_OF_POINTERS_TO_FUNC
 int (*a[10])(int v);
 int (b) (int v);

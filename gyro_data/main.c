@@ -17,12 +17,9 @@
 #define P(EXP)      printf(#EXP)
 
 /*
- * 
+ *  
  */
 
-int (*a[10])(int v);
-int (b)(int v);
-int (c)(int v);
 //typedef int(*PtrToArray)[5];
 //PtrToArray function();
 //
